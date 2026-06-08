@@ -19,7 +19,7 @@ function cargarRestaurantesXML() {
     fetch("datos.xml")
         .then(response => {
             if (!response.ok) {
-                throw new Error("No se pudo acceder al archivo datos.xml");
+                throw new Error("No se pudo acceder al archivo datos");
             }
             return response.text();
         })
