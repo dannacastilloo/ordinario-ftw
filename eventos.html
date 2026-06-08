@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo - Eventos</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="componentes.js"></script>
+    <script src="eventos.js"></script>
+</head>
+<body>
+
+    <div id="header-componente"></div>
+
+    <main>
+        <section>
+            <h2>Agenda de Eventos Culturales</h2>
+            <p>Mantente al tanto de los festivales y actividades de la región. Filtra la agenda escribiendo el mes de tu preferencia </p>
+            
+            <div class="buscador-contenedor">
+                <label for="input-mes">Buscar eventos por mes</label>
+                <input type="text" id="input-mes" placeholder="Ingresa el mes: " aria-label="Filtrar eventos por mes">
+                <button id="btn-limpiar-eventos" type="button">Mostrar todos</button>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table id="tabla-eventos">
+                    <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Mes</th>
+                            <th>Lugar</th>
+                            <th>Costo de acceso</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-eventos">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-componente"></div>
+
+</body>
+</html>
