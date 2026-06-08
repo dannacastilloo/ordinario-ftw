@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo - Restaurantes</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="componentes.js"></script>
+    <script src="restaurantes.js"></script>
+</head>
+<body>
+
+    <div id="header-componente"></div>
+
+    <main>
+        <section>
+            <h2>Guía Gastronómica</h2>
+            <p>Descubre los mejores restaurantes locales. Selecciona un destino para mostrar únicamente los restaurantes disponibles</p>
+            
+            <div class="buscador-contenedor">
+                <label for="select-zona">Filtrar por Zona / Destino:</label>
+                <select id="select-zona" aria-label="Selecciona un destino para filtrar los restaurantes">
+                    <option value="todos">Mostrar todos los lugares</option>
+                    <option value="Xalapa">Xalapa</option>
+                    <option value="Naolinco">Naolinco</option>
+                </select>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table id="tabla-restaurantes">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo de Comida</th>
+                            <th>Especialidad</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-restaurantes">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-componente"></div>
+
+</body>
+</html>
