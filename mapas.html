@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo - Mapas</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="componentes.js"></script>
+    <script src="mapas.js"></script>
+</head>
+<body>
+
+    <div id="header-componente"></div>
+
+    <main>
+        <section>
+            <h2>Mapas y Rutas Interactivas</h2>
+            <p>Usa los botones interactivos de abajo para cambiar de región y visualizar los puntos turísticos clave en el mapa de manera dinámica</p>
+            
+            <div class="buscador-contenedor">
+                <span style="font-weight: bold; font-size: 14px;">Selecciona una Región:</span>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 5px;">
+                    <button id="btn-mapa-todos" type="button">Ver Mapa General</button>
+                    <button id="btn-mapa-centro" type="button">Región Capital / Centro</button>
+                    <button id="btn-mapa-naolinco" type="button">Región Naolinco</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <h3 id="titulo-mapa" style="color: var(--color-principal); margin-bottom: 10px;">Mapa General del Estado de Veracruz</h3>
+                
+                <img id="imagen-mapa" 
+                     src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80" 
+                     alt="Mapa general interactivo mostrando las conexiones entre los distintos municipios turísticos." 
+                     style="max-width: 100%; height: auto; border: 3px solid var(--color-claro); border-radius: 8px;">
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-componente"></div>
+
+</body>
+</html>
