@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo - Planeador</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="componentes.js"></script>
+    <script src="planeador.js"></script>
+</head>
+<body>
+
+    <div id="header-componente"></div>
+
+    <main>
+        <section>
+            <h2>Planeador de Itinerario</h2>
+            <p>Organiza tu presupuesto y ruta. Selecciona tus preferencias para calcular una estimación de tu viaje en tiempo real</p>
+            
+            <form id="form-planeador" class="buscador-contenedor" style="display: flex; flex-direction: column; gap: 15px;">
+                
+                <div>
+                    <label for="num-dias">Número de días de estancia:</label>
+                    <input type="number" id="num-dias" min="1" max="30" value="1" aria-label="Ingresa el número de días de viaje">
+                </div>
+
+                <div>
+                    <label for="fecha-viaje">Fecha aproximada de viaje:</label>
+                    <input type="date" id="fecha-viaje" aria-label="Selecciona la fecha de tu viaje">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <span style="font-weight: bold; font-size: 14px;">Servicios adicionales que te interesan:</span>
+                    <label>
+                        <input type="checkbox" id="chk-Guia" value="200"> Incluir Guía Turístico local (+$200 por día)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="chk-Transporte" value="150"> Rentar transporte interno (+$150 por día)
+                    </label>
+                </div>
+
+                <button id="btn-calcular" type="button" style="width: 100%;">Calcular Presupuesto Estimado</button>
+            </form>
+
+            <div id="resultado-plan" style="display: none; background-color: #edf2f7; padding: 20px; border-radius: 6px; border-left: 5px solid var(--color-principal); margin-top: 20px;">
+                <h3 style="color: var(--color-principal); margin-bottom: 10px;">Resumen de tu Plan de Viaje</h3>
+                <p id="txt-resumen-dias" style="margin-bottom: 5px;"></p>
+                <p id="txt-resumen-fecha" style="margin-bottom: 5px;"></p>
+                <p style="font-size: 18px; font-weight: bold; margin-top: 10px; color: var(--color-oscuro);">
+                    Costo Base Estimado: <span id="total-estimado" style="color: var(--color-principal);">$0.00</span> MXN
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-componente"></div>
+
+</body>
+</html>
