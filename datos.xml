@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plataforma>
+    <!-- usuarios para simulacion de login -->
+    <usuarios>
+        <usuario>
+            <username>Admin</username>
+            <password>admin123</password>
+            <nombre>Estudiante UV</nombre>
+        </usuario>
+    </usuarios>
+
+    <!-- datos de destinos -->
+    <destinos>
+        <destino>
+            <id>1</id>
+            <nombre>Xalapa</nombre>
+            <tipo>Cultural</tipo>
+            <clima>Templado</clima>
+            <descripcion>Lugar de  la cultura y la música, llena de callejones históricos</descripcion>
+        </destino>
+        <destino>
+            <id>2</id>
+            <nombre>Naolinco</nombre>
+            <tipo>Pueblo Mágico</tipo>
+            <clima>Templado</clima>
+            <descripcion>El corazón de la industria del zapato y articulos de piel</descripcion>
+        </destino>
+        <destino>
+            <id>3</id>
+            <nombre>Orizaba</nombre>
+            <tipo>Pueblo Mágico</tipo>
+            <clima>Frío</clima>
+            <descripcion>Ciudad de aguas alegres, es una joya en el centro de veracruz</descripcion>
+        </destino>
+    </destinos>
+
+    <!-- Datos para la página de Restaurantes -->
+    <restaurantes>
+        <restaurante>
+            <id>1</id>
+            <nombre>La casona Restaurante - Galeria</nombre>
+            <tipo>Tradicional y Mariscos</tipo>
+            <zona>Centro de Naolinco</zona>
+            <Especialidad>comida tradicional </Especialidad>
+        </restaurante>
+        <restaurante>
+            <id>2</id>
+            <nombre>Asador El Salto</nombre>
+            <tipo>Carnes</tipo>
+            <zona>Xalapa</zona>
+            <Especialidad>Cortes de carne a la leña</Especialidad>
+        </restaurante>
+    </restaurantes>
+
+    <!-- datos de eventos-->
+    <eventos>
+        <evento>
+            <id>1</id>
+            <nombre>La cantada</nombre>
+            <mes>Noviembre</mes>
+            <lugar>Naolinco</lugar>
+            <precio>Gratuito</precio>
+        </evento>
+        <evento>
+            <id>2</id>
+            <nombre>Feria del pambazo</nombre>
+            <mes>Agosto</mes>
+            <lugar>Xalapa</lugar>
+            <precio>Gratuito/precio>
+        </evento>
+    </eventos>
+</plataforma>
