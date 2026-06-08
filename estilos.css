@@ -1,0 +1,268 @@
+:root {
+    --color-principal: #b0cddb;    
+    --color-principal-oscuro: #8faec4; 
+    --color-secundario: #cce3de;  
+    --color-secundario-hover: #a4c3be; 
+    --color-acento: #f7d6c8;       
+    --color-fondo: #fcfbfc;        
+    --color-tarjeta: #ffffff;      
+    --color-texto: #4e545c;        
+    --color-lineas: #eef2f5;      
+    --fuente-minimalista: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fuente-minimalista);
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    line-height: 1.7;
+    letter-spacing: -0.2px; 
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: var(--color-tarjeta);
+    border-radius: 12px;
+    border: 1px solid var(--color-lineas);
+}
+
+h2 {
+    color: #3a4146;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+p {
+    margin-bottom: 15px;
+    color: #646d75;
+    font-size: 15px;
+}
+
+header {
+    background-color: var(--color-principal);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.logo-container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #3a4146; 
+    margin-bottom: 15px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav ul li a {
+    color: #4e545c;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+
+nav ul li a:hover, 
+nav ul li a:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #222b31;
+}
+
+
+.buscador-contenedor {
+    background-color: #f8fafb;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--color-lineas);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buscador-contenedor label {
+    font-weight: 500;
+    font-size: 13px;
+    color: #555e65;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.buscador-contenedor input[type="text"],
+.buscador-contenedor input[type="password"],
+.buscador-contenedor input[type="number"],
+.buscador-contenedor input[type="date"],
+.buscador-contenedor select {
+    padding: 10px 14px;
+    border: 1px solid #dbe2e6;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--texto);
+    background-color: var(--color-tarjeta);
+    transition: all 0.2s ease;
+}
+
+.buscador-contenedor input:focus,
+.buscador-contenedor select:focus {
+    outline: none;
+    border-color: var(--color-principal-oscuro);
+    background-color: #fff;
+}
+
+button {
+    background-color: var(--color-secundario);
+    color: #384d48; 
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--color-secundario-hover);
+}
+
+#btn-limpiar, #btn-limpiar-eventos, #btn-cerrar-sesion {
+    background-color: var(--color-acento);
+    color: #5a4339;
+}
+
+#btn-limpiar:hover, #btn-limpiar-eventos:hover, #btn-cerrar-sesion:hover {
+    background-color: #e5c3b5;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 14px;
+}
+
+table th {
+    background-color: transparent; 
+    color: #3a4146;
+    font-weight: 600;
+    border-bottom: 2px solid #cbd5dc;
+}
+
+table td {
+    border-bottom: 1px solid var(--color-lineas);
+}
+
+table tr:hover td {
+    color: #111; 
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #ffffff;
+    color: #8a949d;
+    font-size: 13px;
+    margin-top: 60px;
+    border-top: 1px solid var(--color-lineas);
+}
+
+@media (min-width: 768px) {
+    .buscador-contenedor {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .buscador-contenedor input[type="text"],
+    .buscador-contenedor select {
+        flex: 1;
+    }
+
+    button {
+        width: auto;
+    }
+       
+    #contenedor-login {
+        display: flex !important;
+        flex-direction: column !important; 
+        justify-content: center !important;
+        align-items: center !important;   
+        gap: 18px !important;
+        max-width: 380px !important;       
+        margin: 40px auto !important;     
+        padding: 35px 25px !important;     
+        background-color: #ffffff !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+        border: 1px solid #eef2f5 !important;
+    }
+
+    #contenedor-login div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        width: 100% !important;            
+        align-items: stretch !important;
+    }
+
+    #contenedor-login label {
+        font-weight: 600 !important;
+        font-size: 12px !important;
+        color: #555e65 !important;
+        text-align: left !important;       
+    }
+
+    #contenedor-login h3 {
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 19px !important;
+        font-weight: 600 !important;
+        color: #3a4146 !important;
+        margin-bottom: 5px !important;
+    }
+
+    #contenedor-login button {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 14px !important;
+        margin-top: 10px !important;
+        display: block !important;
+    }
+
+    .mini-mensaje-login {
+        font-size: 11px !important;
+        color: #8a949d !important; 
+        text-align: center !important;
+        margin-top: 8px !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
+        font-style: italic;
+    }
+}
