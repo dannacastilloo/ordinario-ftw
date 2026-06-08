@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo - Favoritos</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="componentes.js"></script>
+    <script src="favoritos.js"></script>
+</head>
+<body>
+
+    <div id="header-componente"></div>
+
+    <main>
+        <section>
+            <h2>Mis Lugares Favoritos</h2>
+            <p>Para proteger tus destinos guardados, por favor inicia sesión con tus credenciales.</p>
+            
+            <div id="contenedor-login" class="buscador-contenedor" style="max-width: 400px; margin: 0 auto 20px auto;">
+                <h3 style="margin-bottom: 15px; color: var(--color-principal);">Iniciar Sesión</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px;">
+                    <label for="txt-usuario">Usuario:</label>
+                    <input type="text" id="txt-usuario" placeholder="Ej.admin" aria-label="Ingresa tu nombre de usuario">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 15px;">
+                    <label for="txt-password">Contraseña:</label>
+                    <input type="password" id="txt-password" placeholder="••••••••" aria-label="Ingresa tu contraseña">
+                </div>
+
+                <button id="btn-login" type="button" style="width: 100%;">Ingresar al Sistema</button>
+                <p class="mini-mensaje-login">Usuario: Admin Contraseña: admin123</p>
+                <p id="mensaje-error" style="color: red; font-size: 14px; margin-top: 10px; display: none; font-weight: bold;">Usuario o contraseña incorrectos.</p>
+            </div>
+
+            <div id="contenido-favoritos" style="display: none; margin-top: 20px;">
+                <div style="background-color: #e6f4ea; padding: 15px; border-radius: 6px; margin-bottom: 20px; border-left: 5px solid var(--color-secundario);">
+                    <p style="margin: 0; color: #137333; font-weight: bold;">¡Bienvenido de nuevo, <span id="nombre-usuario-firmado">Estudiante</span>!</p>
+                </div>
+                
+                <p>Aquí tienes la lista de los lugares que has marcado como preferidos para tu viaje:</p>
+                <div class="tabla-contenedor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sitio Favorito</th>
+                                <th>Ubicación</th>
+                                <th>Nota Personal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Callejón de Jesús te Ampare</strong></td>
+                                <td>Xalapa</td>
+                                <td>Ideal para fotos por la tarde.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cascada de La Granada</strong></td>
+                                <td>Naolinco</td>
+                                <td>Llevar calzado cómodo para bajar los escalones.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button id="btn-cerrar-sesion" type="button" style="background-color: #dc3545;">Cerrar Sesión</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-componente"></div>
+
+</body>
+</html>
