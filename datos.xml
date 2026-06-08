@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plataforma>
-    <!-- usuarios para simulacion de login -->
     <usuarios>
         <usuario>
             <username>Admin</username>
             <password>admin123</password>
-            <nombre>Estudiante UV</nombre>
+            <nombre>Viajeroo</nombre>
         </usuario>
     </usuarios>
 
-    <!-- datos de destinos -->
     <destinos>
         <destino>
             <id>1</id>
             <nombre>Xalapa</nombre>
             <tipo>Cultural</tipo>
             <clima>Templado</clima>
-            <descripcion>Lugar de  la cultura y la música, llena de callejones históricos</descripcion>
+            <descripcion>Lugar de la cultura y la música, llena de callejones históricos</descripcion>
         </destino>
         <destino>
             <id>2</id>
@@ -34,25 +32,67 @@
         </destino>
     </destinos>
 
-    <!-- Datos para la página de Restaurantes -->
     <restaurantes>
         <restaurante>
             <id>1</id>
             <nombre>La casona Restaurante - Galeria</nombre>
             <tipo>Tradicional y Mariscos</tipo>
-            <zona>Centro de Naolinco</zona>
-            <Especialidad>comida tradicional </Especialidad>
+            <zona>Naolinco</zona>
+            <Especialidad>comida tradicional</Especialidad>
         </restaurante>
         <restaurante>
             <id>2</id>
+            <nombre>El Rincón del Tejocote</nombre>
+            <tipo>Familiar</tipo>
+            <zona>Naolinco</zona>
+            <Especialidad>Mole dulce naolinqueño y chiles rellenos</Especialidad>
+        </restaurante>
+        <restaurante>
+            <id>3</id>
+            <nombre>Pilancón Gourmet</nombre>
+            <tipo>Tradicional</tipo>
+            <zona>Naolinco</zona>
+            <Especialidad>Cecina naolinqueña artesanal</Especialidad>
+        </restaurante>
+
+        <restaurante>
+            <id>4</id>
             <nombre>Asador El Salto</nombre>
             <tipo>Carnes</tipo>
             <zona>Xalapa</zona>
             <Especialidad>Cortes de carne a la leña</Especialidad>
         </restaurante>
+        <restaurante>
+            <id>5</id>
+            <nombre>La Estancia de los Tecajetes</nombre>
+            <tipo>Antojitos</tipo>
+            <zona>Xalapa</zona>
+            <Especialidad>Enchiladas de tres etnias y café de altura</Especialidad>
+        </restaurante>
+        <restaurante>
+            <id>6</id>
+            <nombre>Postodoro</nombre>
+            <tipo>Italiana</tipo>
+            <zona>Xalapa</zona>
+            <Especialidad>Pastas y pizzas artesanales al horno de piedra</Especialidad>
+        </restaurante>
+
+        <restaurante>
+            <id>7</id>
+            <nombre>El Romanchu</nombre>
+            <tipo>Típica</tipo>
+            <zona>Orizaba</zona>
+            <Especialidad>Chileatole de elote tierno con costilla</Especialidad>
+        </restaurante>
+        <restaurante>
+            <id>8</id>
+            <nombre>Café de la Parroquia Orizaba</nombre>
+            <tipo>Cafetería</tipo>
+            <zona>Orizaba</zona>
+            <Especialidad>Café lechero tradicional y canillas</Especialidad>
+        </restaurante>
     </restaurantes>
 
-    <!-- datos de eventos-->
     <eventos>
         <evento>
             <id>1</id>
@@ -63,10 +103,40 @@
         </evento>
         <evento>
             <id>2</id>
+            <nombre>Fiestas Patronales de San Mateo</nombre>
+            <mes>Septiembre</mes>
+            <lugar>Naolinco</lugar>
+            <precio>Gratuito</precio>
+        </evento>
+
+        <evento>
+            <id>3</id>
             <nombre>Feria del pambazo</nombre>
             <mes>Agosto</mes>
             <lugar>Xalapa</lugar>
-            <precio>Gratuito/precio>
+            <precio>Gratuito</precio>
+        </evento>
+        <evento>
+            <id>4</id>
+            <nombre>Festival de Jazz de la UV</nombre>
+            <mes>Octubre</mes>
+            <lugar>Xalapa</lugar>
+            <precio>Varios precios</precio>
+        </evento>
+
+        <evento>
+            <id>5</id>
+            <nombre>Noche de Leyendas en el Palacio de Hierro</node>
+            <mes>Cada fin de semana</mes>
+            <lugar>Orizaba</lugar>
+            <precio>$50 MXN</precio>
+        </evento>
+        <evento>
+            <id>6</id>
+            <nombre>Festival del Aire y Teleférico</nombre>
+            <mes>Marzo</mes>
+            <lugar>Orizaba</lugar>
+            <precio>Gratuito / Acceso al teleférico con costo</precio>
         </evento>
     </eventos>
 </plataforma>

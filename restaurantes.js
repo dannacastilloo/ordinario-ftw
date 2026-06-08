@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    //  cargamos los restaurantes al momento de cargar la pagina
+    // cargar los datos del xml
     cargarRestaurantesXML();
-    // boton para saber cuando el usuario cambie la opcion de select
+
+    // menu desplegable
     const selectZona = document.getElementById("select-zona");
     if (selectZona) {
         selectZona.addEventListener("change", () => {
@@ -11,26 +12,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// funcion para leer el xml
 function cargarRestaurantesXML() {
+    const cuerpoTabla = document.getElementById("cuerpo-restaurantes");
+    if (!cuerpoTabla) return;
+
     fetch("datos.xml")
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("No se pudo acceder al archivo datos.xml");
+            }
+            return response.text();
+        })
         .then(data => {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(data, "text/xml");
             const restaurantes = xmlDoc.getElementsByTagName("restaurante");
             
-            const cuerpoTabla = document.getElementById("cuerpo-restaurantes");
+            
+            if (restaurantes.length === 0) {
+                cargarDatosAlternativos();
+                return;
+            }
+
             let htmlFilas = "";
-
-            // recorrer los restaurantes del xml
             for (let i = 0; i < restaurantes.length; i++) {
-                const nombre = restaurantes[i].getElementsByTagName("nombre")[0].textContent;
-                const tipo = restaurantes[i].getElementsByTagName("tipo")[0].textContent;
-                const zona = restaurantes[i].getElementsByTagName("zona")[0].textContent;
-                const especialidad = restaurantes[i].getElementsByTagName("especialidad")[0].textContent;
+                const nombre = restaurantes[i].getElementsByTagName("nombre")[0]?.textContent || "Sin nombre";
+                const tipo = restaurantes[i].getElementsByTagName("tipo")[0]?.textContent || "General";
+                const zona = restaurantes[i].getElementsByTagName("zona")[0]?.textContent || "Xalapa";
+                const especialidad = restaurantes[i].getElementsByTagName("especialidad")[0]?.textContent || "Comida tradicional";
 
-                
                 htmlFilas += `
                     <tr data-zona="${zona}">
                         <td><strong>${nombre}</strong></td>
@@ -40,26 +50,47 @@ function cargarRestaurantesXML() {
                     </tr>
                 `;
             }
-
-            if (cuerpoTabla) {
-                cuerpoTabla.innerHTML = htmlFilas;
-            }
+            cuerpoTabla.innerHTML = htmlFilas;
         })
-        .catch(error => console.error("Error al cargar los restaurantes:", error));
+        .catch(error => {
+            console.warn("Leyendo datos locales de respaldo por seguridad...", error);
+            
+            cargarDatosAlternativos();
+        });
 }
 
-// funcion que muestra o oculta las filas segun la zona q seleccionen
+
+function cargarDatosAlternativos() {
+    const cuerpoTabla = document.getElementById("cuerpo-restaurantes");
+    if (!cuerpoTabla) return;
+
+    const datosRespaldo = [
+        { nombre: "El Pilancón", tipo: "Tradicional", especialidad: "Cecina naolinqueña y chiles rellenos", zona: "Naolinco" },
+        { nombre: "Asador El Salto", tipo: "Carnes", especialidad: "Cortes de carne a la leña", zona: "Xalapa" }
+    ];
+
+    let htmlFilas = "";
+    datosRespaldo.forEach(restaurante => {
+        htmlFilas += `
+            <tr data-zona="${restaurante.zona}">
+                <td><strong>${restaurante.nombre}</strong></td>
+                <td>${restaurante.tipo}</td>
+                <td>${restaurante.especialidad}</td>
+                <td>${restaurante.zona}</td>
+            </tr>
+        `;
+    });
+    cuerpoTabla.innerHTML = htmlFilas;
+}
+
 function filtrarRestaurantes(zona) {
     const filas = document.querySelectorAll("#cuerpo-restaurantes tr");
-    
     filas.forEach(fila => {
         const zonaFila = fila.getAttribute("data-zona");
-        
-        //se muestran los datos
         if (zona === "todos" || zonaFila === zona) {
-            fila.style.display = "";
+            fila.style.display = ""; // muestra la fila
         } else {
-            fila.style.display = "none";
+            fila.style.display = "none"; // oculta la fila
         }
     });
 }

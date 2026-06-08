@@ -8,7 +8,9 @@ function cargarHeader() {
     if (headerElement) {
         headerElement.innerHTML = `
             <header>
-                <div class="logo-container">
+                <div class="logo-container" style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+                    <img src="https://www.eluniversal.com.mx/resizer/v2/ENLDJ4FJB5DBDAVEYWVTKHO43M.jpg?auth=399ce271733aaf53637fc7f29dc5ee413a1b20c636fed7cf8c93ec1e5153bef5&smart=true&height=666" 
+                         style="border-radius: 50%; width: 45px; height: 45px; object-fit: cover; border: 2px solid #ffffff;">
                     <h1>Página de Turismo</h1>
                 </div>
                 <nav aria-label="Navegación principal">
@@ -32,7 +34,7 @@ function cargarFooter() {
     if (footerElement) {
         footerElement.innerHTML = `
             <footer>
-                <p>&copy; 2026 Página de Turismo - Fundamentos de Tecnologías Web </p>
+                <p>© 2026 Página de Turismo - Fundamentos de Tecnologías Web</p>
             </footer>
         `;
     }

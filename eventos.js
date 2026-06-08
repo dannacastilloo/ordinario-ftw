@@ -1,75 +1,107 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // cargamos la lista de eventos
+    // datos del xml
     cargarEventosXML();
 
-    
-    const inputMes = document.getElementById("input-mes");
-    const btnLimpiar = document.getElementById("btn-limpiar-eventos");
+    //configurar la barra de busqueda
+    const inputMes = document.querySelector(".buscador-contenedor input[type='text']");
+    const btnMostrarTodos = document.querySelector(".buscador-contenedor button");
 
     if (inputMes) {
         inputMes.addEventListener("input", () => {
-            const valorFiltro = inputMes.value.toLowerCase();
-            filtrarEventos(valorFiltro);
+            const textoMes = inputMes.value.trim().toLowerCase();
+            filtrarEventosPorMes(textoMes);
         });
     }
 
-    if (btnLimpiar) {
-        btnLimpiar.addEventListener("click", () => {
-            inputMes.value = "";
-            filtrarEventos("");
+    if (btnMostrarTodos && inputMes) {
+        btnMostrarTodos.addEventListener("click", () => {
+            inputMes.value = ""; // limpia el buscador
+            filtrarEventosPorMes(""); //muestra
         });
     }
 });
 
-
 function cargarEventosXML() {
+    const cuerpoTabla = document.getElementById("cuerpo-eventos");
+    if (!cuerpoTabla) return;
+
     fetch("datos.xml")
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error("Error al cargar datos");
+            return response.text();
+        })
         .then(data => {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(data, "text/xml");
             const eventos = xmlDoc.getElementsByTagName("evento");
-            
-            const cuerpoTabla = document.getElementById("cuerpo-eventos");
-            let htmlFilas = "";
+o
+            if (eventos.length === 0) {
+                cargarEventosRespaldo();
+                return;
+            }
 
-            // recorrer el arreglo de eventos del archivo xml
+            let htmlFilas = "";
             for (let i = 0; i < eventos.length; i++) {
-                const nombre = eventos[i].getElementsByTagName("nombre")[0].textContent;
-                const mes = eventos[i].getElementsByTagName("mes")[0].textContent;
-                const lugar = eventos[i].getElementsByTagName("lugar")[0].textContent;
-                const precio = eventos[i].getElementsByTagName("precio")[0].textContent;
+                const nombre = eventos[i].getElementsByTagName("nombre")[0]?.textContent || "Evento sin nombre";
+                const mes = eventos[i].getElementsByTagName("mes")[0]?.textContent || "No especificado";
+                const lugar = eventos[i].getElementsByTagName("lugar")[0]?.textContent || "Por confirmar";
+                // Soporta tanto <precio> como <costo> por si acaso
+                const precio = eventos[i].getElementsByTagName("precio")[0]?.textContent || 
+                               eventos[i].getElementsByTagName("costo")[0]?.textContent || "Gratuito";
 
                 htmlFilas += `
-                    <tr>
+                    <tr data-mes="${mes.toLowerCase()}">
                         <td><strong>${nombre}</strong></td>
-                        <td class="col-mes">${mes}</td>
+                        <td>${mes}</td>
                         <td>${lugar}</td>
                         <td>${precio}</td>
                     </tr>
                 `;
             }
-
-            if (cuerpoTabla) {
-                cuerpoTabla.innerHTML = htmlFilas;
-            }
+            cuerpoTabla.innerHTML = htmlFilas;
         })
-        .catch(error => console.error("Error al cargar el XML de eventos:", error));
+        .catch(error => {
+            console.warn("Cargando eventos locales de respaldo...", error);
+            cargarEventosRespaldo();
+        });
 }
 
-//  funcio n para hacer la busqueda interactivo
-function filtrarEventos(filtro) {
+
+function cargarEventosRespaldo() {
+    const cuerpoTabla = document.getElementById("cuerpo-eventos");
+    if (!cuerpoTabla) return;
+
+    const eventosRespaldo = [
+        { nombre: "La cantada", mes: "Noviembre", lugar: "Naolinco", precio: "Gratuito" },
+        { nombre: "Fiestas Patronales de San Mateo", mes: "Septiembre", lugar: "Naolinco", precio: "Gratuito" },
+        { nombre: "Feria del pambazo", mes: "Agosto", lugar: "Xalapa", precio: "Gratuito" },
+        { nombre: "Festival de Jazz de la UV", mes: "Octubre", lugar: "Xalapa", precio: "Varios precios" },
+        { nombre: "Noche de Leyendas en el Palacio de Hierro", mes: "Cada fin de semana", lugar: "Orizaba", precio: "$50 MXN" },
+        { nombre: "Festival del Aire y Teleférico", mes: "Marzo", lugar: "Orizaba", precio: "Gratuito / Acceso con costo" }
+    ];
+
+    let htmlFilas = "";
+    eventosRespaldo.forEach(ev => {
+        htmlFilas += `
+            <tr data-mes="${ev.mes.toLowerCase()}">
+                <td><strong>${ev.nombre}</strong></td>
+                <td>${ev.mes}</td>
+                <td>${ev.lugar}</td>
+                <td>${ev.precio}</td>
+            </tr>
+        `;
+    });
+    cuerpoTabla.innerHTML = htmlFilas;
+}
+
+function filtrarEventosPorMes(texto) {
     const filas = document.querySelectorAll("#cuerpo-eventos tr");
-    
     filas.forEach(fila => {
-        const celdaMes = fila.querySelector(".col-mes");
-        if (celdaMes) {
-            const textoMes = celdaMes.textContent.toLowerCase();
-            if (textoMes.includes(filtro)) {
-                fila.style.display = "";
-            } else {
-                fila.style.display = "none";
-            }
+        const mesFila = fila.getAttribute("data-mes") || "";
+        if (texto === "" || mesFila.includes(texto)) {
+            fila.style.display = "";
+        } else {
+            fila.style.display = "none";
         }
     });
 }
