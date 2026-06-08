@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo - Destinos</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="componentes.js"></script>
+    <script src="destinos.js"></script>
+</head>
+<body>
+
+    <div id="header-componente"></div>
+
+    <main>
+        <section>
+            <h2>Explora Nuestros Destinos</h2>
+            <p>Encuentra el lugar ideal para un proximoviaje. Puedes usar el buscador de abajo para filtrar por tipo de destino.</p>
+            
+            <div class="buscador-contenedor">
+                <label for="input-buscar">Filtrar por tipo (Cultural, Pueblo Mágico):</label>
+                <input type="text" id="input-buscar" placeholder="Ej. Cultural..." aria-label="Escribe el tipo de destino para filtrar">
+                <button id="btn-limpiar" type="button">Mostrar todos</button>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table id="tabla-destinos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Clima</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-componente"></div>
+
+</body>
+</html>
